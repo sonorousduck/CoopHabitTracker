@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { SafeAreaView, Text, TouchableWithoutFeedback, useColorScheme, StyleSheet, View, TouchableOpacity, Animated } from "react-native";
+import { useColorScheme, StyleSheet, View, TouchableOpacity, Animated } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import NewHabit from "../Components/NewHabit";
 
-const CreateHabitPopup = ({createHabitPopupExists, setCreateHabitPopupExists}) => {
+const CreateHabitPopup = ({createHabitPopupExists, setCreateHabitPopupExists, isYearly, isMonthly, isWeekly, isDaily}) => {
     const [translateAnimation, setTranslateAnimation] = useState(new Animated.Value(0))
     const [opacityAnimation, setOpacityAnimation] = useState(new Animated.Value(0))
     const [showHabitCreator, setShowHabitCreator] = useState(false);
@@ -97,6 +98,9 @@ const CreateHabitPopup = ({createHabitPopupExists, setCreateHabitPopupExists}) =
             }}>
                 <FontAwesomeIcon style={styles.darkMode} icon={faTimes} size={30}/>
             </TouchableOpacity>
+            
+            <NewHabit isYearly={isYearly} isMonthly={isMonthly} isWeekly={isWeekly} isDaily={isDaily} />
+
         </Animated.View>
 
             </> : <></>}

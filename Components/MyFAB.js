@@ -5,7 +5,7 @@ import { FAB } from 'react-native-paper';
 import { useFocusEffect } from '@react-navigation/native';
 
 
-const MyFAB = ({ wasPressed, navigation, slidOpen, setSlidOpen}) => {
+const MyFAB = ({ wasPressed, navigation, slidOpen, setSlidOpen, isYearly, setIsYearly, isMonthly, setIsMonthly, isWeekly, setIsWeekly, isDaily, setIsDaily}) => {
   const [rotateAnimation, setRotateAnimation] = useState(new Animated.Value(0));
   const [translateAnimation, setTranslateAnimation] = useState(new Animated.Value(0))
   const [opacityAnimation, setOpacityAnimation] = useState(new Animated.Value(0))
@@ -123,19 +123,48 @@ const MyFAB = ({ wasPressed, navigation, slidOpen, setSlidOpen}) => {
       <AnimatedTouchable style={[styles.commonPopup, styles.fourthPopup, opacityAnimatedStyle, popupAnimatedStyle]} onPress={() => {
         setIsX(!isX);
         handleAnimation();
-        setSlidOpen(true)}
-      }
-        
-        >
+        setSlidOpen(true);
+        setIsYearly(true);
+        setIsMonthly(false);
+        setIsWeekly(false);
+        setIsDaily(false);
+      }}>
         <Text>Create Yearly Habit</Text> 
       </AnimatedTouchable>
-      <AnimatedTouchable style={[styles.commonPopup, styles.thirdPopup, opacityAnimatedStyle, popupAnimatedStyle]} onPress={() => console.log("Pressed")}>
+      <AnimatedTouchable style={[styles.commonPopup, styles.thirdPopup, opacityAnimatedStyle, popupAnimatedStyle]} onPress={() => {
+        setIsX(!isX);
+        handleAnimation();
+        setSlidOpen(true);
+
+        setIsYearly(false);
+        setIsMonthly(true);
+        setIsWeekly(false);
+        setIsDaily(false);      }}>
         <Text>Create Monthly Habit</Text> 
       </AnimatedTouchable>
-      <AnimatedTouchable style={[styles.commonPopup, styles.popup, opacityAnimatedStyle, popupAnimatedStyle]} onPress={() => console.log("Pressed")}>
+      <AnimatedTouchable style={[styles.commonPopup, styles.popup, opacityAnimatedStyle, popupAnimatedStyle]} onPress={() => {
+        setIsX(!isX);
+        handleAnimation();
+        setSlidOpen(true);
+
+        setIsYearly(false);
+        setIsMonthly(false);
+        setIsWeekly(false);
+        setIsDaily(true);        
+        }}>
         <Text>Create Daily Habit</Text>
       </AnimatedTouchable>
-      <AnimatedTouchable style={[styles.commonPopup, styles.secondPopup, opacityAnimatedStyle, popupAnimatedStyle]} onPress={() => console.log("Pressed")}>
+      <AnimatedTouchable style={[styles.commonPopup, styles.secondPopup, opacityAnimatedStyle, popupAnimatedStyle]} onPress={() => {
+        setIsX(!isX);
+        handleAnimation();
+        setSlidOpen(true);
+
+        setIsYearly(false);
+        setIsMonthly(false);
+        setIsWeekly(true);
+        setIsDaily(false);
+
+}}>
         <Text>Create Weekly Habit</Text> 
       </AnimatedTouchable>
       
