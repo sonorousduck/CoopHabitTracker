@@ -12,7 +12,6 @@ const NewYearlyHabit = () => {
 
     return (
         <View style={styles.cardView}>
-            
             <TextInput autoFocus={true} style={[isDarkMode ? styles.darkInput : styles.lightInput, styles.inCommonInput]} placeholder="Enter Yearly Goal"/>
         </View>
     )
