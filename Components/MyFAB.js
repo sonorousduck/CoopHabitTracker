@@ -20,7 +20,7 @@ const MyFAB = ({ wasPressed, navigation, slidOpen, setSlidOpen, isYearly, setIsY
 
   }, [wasPressed])
 
-  React.useEffect(
+  React.useEffect( 
     () => navigation.addListener('blur', () => {
       // setIsX(false);
       // setShouldShow(false);
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   commonPopup: {
-    backgroundColor: '#63D7C4',
+    backgroundColor: '#59B7A6',
     width: '300%',
     height: '100%',
     borderRadius: 40,
@@ -239,17 +239,6 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 210,
   },
-  
-extendedFab : {
-  backgroundColor: 'red',
-  width: '225%',
-  height: '100%',
-  borderRadius: 40,
-  shadowColor: '#171717',
-  shadowOffset: {width: -2, height: 4},
-  shadowOpacity: 0.2,
-  shadowRadius: 3,
-},
 
 
 })
