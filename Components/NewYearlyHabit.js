@@ -24,9 +24,9 @@ const NewYearlyHabit = () => {
             <ScrollView style={styles.cardView} keyboardShouldPersistTaps="never">
                 <TextInput placeholderTextColor={'grey'} style={[isDarkMode ? styles.darkInput : styles.lightInput, styles.inCommonInput]} placeholder="Enter Yearly Goal" value={name} onChangeText={setName}/>
                 <TextInput placeholderTextColor={'grey'} multiline={true} style={[isDarkMode ? styles.darkInput : styles.lightInput, styles.inCommonInput, styles.detailsInput]} placeholder="Details (Optional)" value={description} onChangeText={setDescription}/>
-                <MyDateTime />
+                <MyDateTime date={date} setDate={setDate}/>
                 {/* <TextInput placeholderTextColor={'grey'} style={[isDarkMode ? styles.darkInput : styles.lightMode, styles.inCommonInput]} placeholder="Repeat every X years" onChangeText={setRepeatEvery} keyboardType="numeric" /> */}
-                
+
             </ScrollView>
             <TouchableOpacity mode="contained" style={styles.darkButtonStyle} onPress={() => {
                 recordHabit(name, description, date);

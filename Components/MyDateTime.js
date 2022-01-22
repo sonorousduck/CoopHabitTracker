@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
-import { Button, StyleSheet, useColorScheme } from 'react-native'
+import { Text, StyleSheet, useColorScheme, View } from 'react-native'
 import DatePicker from 'react-native-date-picker'
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
 
 
-export default () => {
-  const [date, setDate] = useState(new Date())
+export default ({date, setDate}) => {
+//   const [date, setDate] = useState(new Date())
   const isDarkMode = useColorScheme() === 'dark';
   const [open, setOpen] = useState(false)
 
 
   return (
     <>
-
-    <Button placeholderTextColor={'grey'} style={[isDarkMode ? styles.darkInput : styles.lightInput, styles.inCommonInput, styles.detailsInput]} title={date.toDateString()} onPress={() => setOpen(true)}/>
+    <View placeholderTextColor={'grey'} style={[isDarkMode ? styles.darkInput : styles.lightInput, styles.inCommonInput, styles.detailsInput]} title={date.toDateString()} onStartShouldSetResponder={() => setOpen(true)}>
+        <Text style={[isDarkMode ? styles.darkText : styles.lightText]}>{date.toDateString()}</Text>
+    </View>
 
       <DatePicker
         modal
@@ -36,6 +37,19 @@ export default () => {
 }
 
 const styles = StyleSheet.create({
+
+    darkText: {
+        color: "white",
+        width: "100%",
+        fontSize: 24,
+    },
+
+    lightText: {
+        color: "black",
+        width: "100%",
+        fontSize: 24,
+    },
+
     cardView: {
         textAlign: 'center',
         alignContent: 'center',
@@ -59,10 +73,6 @@ const styles = StyleSheet.create({
         padding: 8,
         marginTop: 4,
         marginBottom: 4,
-    },
-
-    detailsInput: {
-        height: "60%",
     },
 
     darkInput: {

@@ -5,6 +5,7 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 import CreateHabitPopup from "./CreateHabitPopup";
 import { queryYearlyHabits } from "../Models/habitModel";
 import { ScrollView } from "react-native-gesture-handler";
+import YearlyGoalsCard from "../Components/YearlyGoalsCard";
 
 
 
@@ -38,18 +39,18 @@ const Homepage = ({ navigation }) => {
     <TouchableWithoutFeedback style={{zIndex: zIndexVal}} onPress={() => {
       setPressed(!pressed)}}>
       <SafeAreaView style={[{ height: '100%'}, backgroundStyle]}>
-        <Text style={styles.title}>Upcoming Habits</Text>
+        <Text style={isDarkMode ? styles.darkTitle : styles.title}>Upcoming Habits</Text>
+        < YearlyGoalsCard />
 
 
-
-          {isLoading ? <></> : 
+          {/* {isLoading ? <></> : 
             yearlyGoals.map((habit, index) => {
               return (
               <View key={index}>
-                <Text>{JSON.stringify(habit.name)}</Text>
+                <Text style={{color: 'white'}}>{JSON.stringify(habit)}</Text>
               </View>
               )
-          })}  
+          })}   */}
 
         <MyFAB navigation={navigation} wasPressed={pressed} slidOpen={slidOpen} setSlidOpen={setSlidOpen} isYearly={isYearly} setIsYearly={setIsYearly} isMonthly={isMonthly} setIsMonthly={setIsMonthly} isWeekly={isWeekly} setIsWeekly={setIsWeekly} isDaily={isDaily} setIsDaily={setIsDaily}/>
         <CreateHabitPopup createHabitPopupExists={slidOpen} setCreateHabitPopupExists={setSlidOpen} isYearly={isYearly} isMonthly={isMonthly} isWeekly={isWeekly} isDaily={isDaily}/>
@@ -65,6 +66,13 @@ const styles = StyleSheet.create({
     width: "100%",
     borderWidth: 3,
     borderColor: "#2b2b2b",
+  },
+
+
+  darkTitle: {
+    fontSize: 36,
+    textAlign: 'center',
+    color: 'white',
   },
 
   title: {
