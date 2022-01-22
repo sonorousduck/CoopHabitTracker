@@ -29,12 +29,11 @@ const GoalsCard = () => {
             yearlyGoals.map((habit, index) => {
               return (
               <View key={index}>
+                <View><Text style={styles.name}>{habit.name}</Text></View>
                 <Text style={{color: 'white'}}>{habit.name}{habit.details}{habit.date.getMonth() + 1}{habit.date.getDate()}</Text>
               </View>
               )
           })}  
-
-
     </View>
 
     );
@@ -44,6 +43,11 @@ const GoalsCard = () => {
 
 
 const styles = StyleSheet.create({
+    name: {
+      fontSize: 24,
+      color: 'white',
+      
+    },  
 
     commonCard: {
       borderRadius: 10,
