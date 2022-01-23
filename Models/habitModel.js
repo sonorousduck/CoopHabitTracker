@@ -61,10 +61,15 @@ export const queryYearlyMostRecentHabits = (numberHabits) => {
   nextMonth.setMonth(filterDate.getMonth() + 1);
   updateYearlyHabits();
 
-  const yearlyHabits = realm.objects("Habit").filtered("date >= $0 && date <= $1", filterDate, nextMonth);
+  const yearlyHabits = realm.objects("Habit").filtered("date <= $0 && date >= $1", nextMonth, filterDate ).sorted('date').slice(0, numberHabits);
+
 //  const yearlyHabits = realm.objects("Habit").filtered("date >= $0 && date <= $1", filterDate, nextMonth);
 
-  console.log(yearlyHabits);
+  // for (let i = 0; i < numberHabits; i++) {
+  //   numYearlyHabits.push()
+  // }
+  // console.log(yearlyHabits[yearlyHabits.length - 1]);
+  console.log(yearlyHabits)
 
   return yearlyHabits
 
